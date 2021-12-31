@@ -1,2 +1,3 @@
-# terraform-digitalocean-lonedroplet
+# Terraform DigitalOcean Lone Droplet
+
 A single DigitalOcean Droplet that is addressible with a domain name
