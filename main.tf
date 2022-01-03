@@ -33,3 +33,13 @@ resource "digitalocean_ssh_key" "default" {
   name       = "Default Droplet Key"
   public_key = file(var.ssh_pub_key_file)
 }
+
+resource "digitalocean_floating_ip" "web" {
+  region = var.region
+  # use assignment resource instead of ID here for flexibility
+}
+
+resource "digitalocean_floating_ip_assignment" "web" {
+  ip_address = digitalocean_floating_ip.web.ip_address
+  droplet_id = digitalocean_droplet.web.id
+}

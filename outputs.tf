@@ -4,6 +4,6 @@ output "droplet_id" {
 }
 
 output "droplet_ip" {
-  value       = digitalocean_droplet.web.ipv4_address
+  value       = digitalocean_floating_ip_assignment.web.ip_address
   description = "ID for lone droplet"
 }
