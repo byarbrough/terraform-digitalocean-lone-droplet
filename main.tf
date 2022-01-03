@@ -8,7 +8,7 @@
 terraform {
   required_providers {
     digitalocean = {
-      source = "digitalocean/digitalocean"
+      source  = "digitalocean/digitalocean"
       version = "~> 2.0"
     }
   }
@@ -20,10 +20,16 @@ provider "digitalocean" {
 }
 
 resource "digitalocean_droplet" "web" {
-    image = var.droplet_image
-    name = var.droplet_name
-    region = var.region
-    size = var.droplet_size
-  
+  image    = var.droplet_image
+  name     = var.droplet_name
+  region   = var.region
+  size     = var.droplet_size
+  ssh_keys = [digitalocean_ssh_key.default.fingerprint]
+
+  tags = ["web"]
 }
 
+resource "digitalocean_ssh_key" "default" {
+  name       = "Default Droplet Key"
+  public_key = file(var.ssh_pub_key_file)
+}
