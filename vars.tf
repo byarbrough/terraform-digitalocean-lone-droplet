@@ -21,6 +21,12 @@ variable "droplet_name" {
   default     = "web-1"
 }
 
+variable "droplet_tags" {
+  description = "Tags to apply to droplet"
+  type        = list(string)
+  default     = []
+}
+
 variable "droplet_size" {
   description = "Size for the droplet"
   type        = string

@@ -25,8 +25,7 @@ resource "digitalocean_droplet" "web" {
   region   = var.region
   size     = var.droplet_size
   ssh_keys = [digitalocean_ssh_key.default.fingerprint]
-
-  tags = ["web"]
+  tags     = var.droplet_tags
 }
 
 resource "digitalocean_ssh_key" "default" {
