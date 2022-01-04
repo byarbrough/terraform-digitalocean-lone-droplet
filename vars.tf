@@ -37,3 +37,9 @@ variable "ssh_pub_key_file" {
   type        = string
   description = "Path to SSH public key file"
 }
+
+variable "ssh_ip_whitelist" {
+  description = "List of IP CIDRs that can SSH to droplet"
+  type        = list(string)
+  default     = ["127.0.0.1/32"]
+}
